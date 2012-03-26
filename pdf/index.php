@@ -61,7 +61,7 @@ switch(request('mode'))
 $fullPath = $SITE->cache_path("pdf").$filename;
 
 if(!file_exists($fullPath) || filemtime($fullPath))
-	shell_exec('/usr/bin/wkhtmltopdf-i386 "' . $url . '" ' . $fullPath);
+	shell_exec('/home/strateg3/bin/wkhtmltopdf/wkhtmltopdf-i386 "' . $url . '" ' . $fullPath);
 
 $name = str_replace('&', ' and ', $name);
 $name = preg_replace('/[ ]+/', ' ', $name);

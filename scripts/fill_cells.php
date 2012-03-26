@@ -1,7 +1,8 @@
 #!/usr/bin/php
 <?php
-set_include_path('.:../www/inc:../common');
-chdir('../www');
+//JGD: Why?
+//set_include_path('.:../www/inc:../common');
+chdir('..');
 include('inc.php');
 
 if( !array_key_exists(1, $argv) )

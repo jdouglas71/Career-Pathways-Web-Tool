@@ -9,25 +9,30 @@ class ThisSite extends SiteSettings {
 	public $olmis_enabled = TRUE;
 	public $oregon_skillset_enabled = TRUE;
 
+	//JGD: Need to change?:
 	public $lang_file = 'oregon';
 	
-	function name() { return "Career Pathways Web Tool"; }
+	function name() { return "Humboldt Career Pathways Web Tool"; }
+	//JGD: NEed to change?
 	function email_name() { return "Oregon CTE Pathways"; }
+	//JGD: NEed to change?
 	function email() { return "helpdesk@ctepathways.org"; }
 
+	//JGD: NEed to change?
 	function recipient_email() { return "helpdesk@ctepathways.org"; }
 
 	function __construct() {
-		$this->DBname = 'pathways';
-		$this->DBuser = 'pathways';
-		$this->DBpass = 'pathways';
+		$this->DBname = 'strateg3_pathways';
+		$this->DBuser = 'strateg3_pathway';
+		$this->DBpass = '!!_CPT_pathway';
 
 		$this->ConnectDB();
 	}
 
 	function base_url() { return $_SERVER['SERVER_NAME']; }
 	function cache_path($folder="") { 
-		$base_dir = '/web/oregon.ctepathways.org/cache/';
+		//JGD: Changed.
+		$base_dir = '/home/strateg3/public_html/careerpathways/cache';
 		
 		if( $folder ) {
 			if( !is_dir($base_dir . $folder) ) 
