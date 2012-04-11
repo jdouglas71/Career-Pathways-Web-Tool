@@ -201,8 +201,12 @@ pageTracker._trackPageview();
 
 		echo '<div id="resourcebar">';
 		if( IsLoggedIn() ) {
+			echo '<div id="resourcebar">';
 			echo '<div id="resourcebar_header"></div>';
 		}
+		else {
+			echo '<div id="navbox">';
+			}
 		echo '<div id="resourcebar_content" class="links">';
 		echo '<ul>';
 			echo '<li' . ( $p == '/p/tutorial' ? ' class="active"' : '' ) . '><a href="/p/tutorial">Tutorial</a></li>';
