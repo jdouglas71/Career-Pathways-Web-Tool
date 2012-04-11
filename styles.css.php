@@ -473,7 +473,7 @@ text-decoration: none;
 background-color: #<?= $WHITE ?>;
 background-repeat: no-repeat;
 width: 170px;
-height: 75px;
+height: 65px;
 font-size: 8pt;
 
 }
