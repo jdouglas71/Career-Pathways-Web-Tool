@@ -4,13 +4,13 @@ header("Content-type: text/css");
 $WHITE = "FFFFFF";
 $BLACK = "000000";
 $GREY = "999999";
-$LT_GREY = "CCCCCC";
+$LT_GREY = "CCCCCC"; 
 $D_GREY = "333333";
-$BLUE = "003366";
-$D_BLUE = "001133";
+$BLUE = "84d0d2"; 
+$D_GREEN = "203b42";
 
 $GOLD = "e6d09e";
-$D_GOLD = "cf9d2b";
+$D_GOLD = "e1ac39";
 $L_GOLD = "f2e7ce";
 
 $RED = "EE3300";
@@ -19,19 +19,19 @@ $RED = "EE3300";
 
 body
 {
-  font-family: verdana, tahoma, arial, sans-serif;
-  font-size: 8pt;
-  color:#<?= $BLACK; ?>;
-  margin: 0px;
+font-family: verdana, tahoma, arial, sans-serif;
+font-size: 8pt;
+color:#<?= $BLACK; ?>;
+margin: 0px;
 }
 
 #sandbox_border {
-	position: fixed;
-	width: 100%;
-	background: url(/images/sandbox.gif) repeat-x;
-	background-color: #FF0000;
-	z-index: 5;
-	height: 15px;
+position: fixed;
+width: 100%;
+background: url(/images/sandbox.gif) repeat-x;
+background-color: #FF0000;
+z-index: 5;
+height: 15px;
 }
 
 h1
