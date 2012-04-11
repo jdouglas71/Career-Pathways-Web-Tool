@@ -10,11 +10,11 @@ class ThisSite extends SiteSettings {
 	public $oregon_skillset_enabled = TRUE;
 
 	//JGD: Need to change?:
-	public $lang_file = 'oregon';
+	public $lang_file = 'humboldt';
 	
 	function name() { return "Humboldt Career Pathways Web Tool"; }
 	//JGD: NEed to change?
-	function email_name() { return "Oregon CTE Pathways"; }
+	function email_name() { return "Humboldt CTE Pathways"; }
 	//JGD: NEed to change?
 	function email() { return "helpdesk@ctepathways.org"; }
 
@@ -32,7 +32,7 @@ class ThisSite extends SiteSettings {
 	function base_url() { return $_SERVER['SERVER_NAME']; }
 	function cache_path($folder="") { 
 		//JGD: Changed.
-		$base_dir = '/home/strateg3/public_html/careerpathways/cache';
+		$base_dir = '/home/strateg3/public_html/careerpathways/cache/';
 		
 		if( $folder ) {
 			if( !is_dir($base_dir . $folder) ) 

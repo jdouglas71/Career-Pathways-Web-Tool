@@ -3,6 +3,9 @@
 cache/*/*
 
 www/include/*.settings.php
-!www/include/default.settings.php
+www/include/default.settings.php
 
 www/.htaccess
+
+common/Amazon-SES70-Mailer-PHP/
+common/AWSSDKforPHP/

@@ -23,10 +23,6 @@ PrintHeader();
 ShowSchoolForm($school_id);
 PrintFooter();
 
-
-
-
-
 function ShowSchoolForm($id="") {
 global $DB;
 

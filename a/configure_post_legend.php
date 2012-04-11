@@ -32,7 +32,7 @@
 ?>
 		<tr>
 			<td><img src="/common/silk/tick.png" id="legend_confirm_<?=$item['id']?>" alt="Confirmed" style="visibility: hidden; margin-right: 15px;" /></td>
-			<td><img src="/c/images/legend/b<?=$item['id']?>.png" alt="<?=$item['text']?>" /></td>
+			<td><img src="/c/images/legend2/b<?=$item['id']?>.png" alt="<?=$item['text']?>" /></td>
 			<td><div id="legend_source_<?=$item['id']?>" style="padding: 0 10px;"><?=$item['text']?></div></td>
 			<td><img class="legend_transfer" id="legend_transfer_<?=$item['id']?>" src="/common/silk/arrow_right.png" alt="Transfer Description" style="cursor: pointer;" /></td>
 			<td><input type="text" id="legend_text_<?=$item['id']?>" maxlength="255" style="margin-left: 10px; width: 220px;" /></td>

@@ -129,7 +129,7 @@ class ThisSiteTemplate extends SiteTemplate {
 		</ul>
 
 		<?php
-		if( $_SERVER['SERVER_NAME'] == 'oregon.ctepathways.org' ) {
+		if( $_SERVER['SERVER_NAME'] == 'careerpathways.strategicehosting.com' ) {
 		?>
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");

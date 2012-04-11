@@ -1,4 +1,11 @@
 <?php
+	//JGD: Postprocessing
+	//ob_start( 'ob_postprocess' );
+
+	//JGD: Logging for testing
+	$fd = fopen("/home/strateg3/public_html/careerpathways/cpt.log", "a");
+	fwrite( $fd, "ids: " . $_GET['ids'] . "\n" );
+	
 	$checked = FALSE;
 	if(substr($_GET['ids'], 0, 1) == 'c')
 	{
@@ -27,8 +34,16 @@
 
 	$finalPath = $folder . "/" . $_GET['ids'] . '.png';
 
-	if(file_exists($finalPath) && !$checked && !$largeMode)
+	fwrite( $fd, "FinalPath: $finalPath\n" );
+
+	//JGD: The only place I can find this being used is always in LargeMode, so I'm enabling caching of the icons.
+	if(file_exists($finalPath) && !$checked ) //&& !$largeMode)
+	{
+		fwrite( $fd, "Using cached version of file\n" );
+		//End output buffering
+		//ob_end_flush();
 		die(file_get_contents($finalPath));
+	}
 
 	// Gather the list of graphics requeste by the URL
 	$sql = "SELECT `graphic` FROM `post_legend` WHERE";
@@ -50,6 +65,11 @@
 		// Output the generated image
 		imagesavealpha($img, TRUE);
 		imagepng($img);
+		imagepng($img, $finalPath);
+		fflush( $fd );
+		fclose( $fd );
+		//End output buffering
+		//ob_end_flush();
 		die();
 	}
 	elseif($largeMode)
@@ -61,6 +81,12 @@
 		// Output the generated image
 		imagesavealpha($img, TRUE);
 		imagepng($img);
+		imagepng($img, $finalPath);
+		fwrite( $fd, "largeMode\n" );
+		fflush( $fd );
+		fclose( $fd );
+		//End output buffering
+		//ob_end_flush();
 		die();
 	}
 
@@ -79,7 +105,12 @@
 	}//foreach
 
 	imagesavealpha($img, TRUE);
+	fwrite( $fd, "outputting image to $finalPath\n" );
 	imagepng($img, $finalPath);
+	fflush( $fd );
+	fclose( $fd );
+	//End output buffering
+	//ob_end_flush();
 	die(file_get_contents($finalPath));
 
 	function initializeImage($width, $height)
@@ -91,5 +122,20 @@
 		imagefilledrectangle($img, 0, 0, $width, $height, $blank);
 		imagealphablending($img, TRUE);
 		return $img;
+	}
+
+	//Our custom post processing function
+	function ob_postprocess($buffer)
+	{
+		//$buffer = trim(preg_replace('/\s+/', ' ', $buffer));
+	
+		// check if the browser accepts gzip encoding. Most do, but just in case
+		if(strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip') !== FALSE)
+		{
+			$buffer = gzencode($buffer);
+			header('Content-Encoding: gzip');
+		}
+	
+		return $buffer;
 	}
 ?>
