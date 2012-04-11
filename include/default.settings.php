@@ -6,7 +6,7 @@ class ThisSite extends SiteSettings {
 
 	public $debug = true;
 	
-	public $olmis_enabled = TRUE;
+	public $olmis_enabled = FALSE;
 	public $oregon_skillset_enabled = TRUE;
 
 	//JGD: Need to change?:
@@ -16,10 +16,10 @@ class ThisSite extends SiteSettings {
 	//JGD: NEed to change?
 	function email_name() { return "Humboldt CTE Pathways"; }
 	//JGD: NEed to change?
-	function email() { return "helpdesk@ctepathways.org"; }
+	function email() { return "helpdesk@careermaphumboldt.com"; }
 
 	//JGD: NEed to change?
-	function recipient_email() { return "helpdesk@ctepathways.org"; }
+	function recipient_email() { return "helpdesk@careermaphumboldt.com"; }
 
 	function __construct() {
 		$this->DBname = 'strateg3_pathways';
