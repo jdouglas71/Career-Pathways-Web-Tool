@@ -97,6 +97,10 @@ class ThisSiteTemplate extends SiteTemplate {
 			$this->PublicToolbar();
 			?>
 			</div> <!-- sideboxes -->
+			
+			<div id="logos">
+				<a href="http://humboldtwib.com/d6/wib-members-meetings" target="_blank"><img src="/images/CountyOfHumboldtCASeal.gif" width="71" height="65" alt="County Of Humboldt CA Seal" /></a><a href="http://www.thejobmarket.org/" target="_blank"><img src="/images/JM_Logo.gif" width="71" height="65" alt="The Job Market Logo" /></a>
+			</div> <!-- site logos -->
 
 			<?php
 			if( !$this->is_chart_page ) {
