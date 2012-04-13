@@ -29,6 +29,7 @@ include('lang/' . $SITE->lang_file . '.php');
 
 /*
  * Is this even used anywhere?
+ * JGD: I'm using it.
  */
 function logmsg($message) {
 	global $SITE;
@@ -334,6 +335,14 @@ function dv($value, $default='')
 function db()
 {
 	return $GLOBALS['DB'];
+}
+
+function varDumpString($var)
+{
+	ob_start();
+	var_dump( $var );
+	$out = ob_get_clean();
+	return $out;
 }
 
 ?>
