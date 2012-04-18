@@ -22,8 +22,8 @@ class ThisSite extends SiteSettings {
 	function recipient_email() { return "helpdesk@careermaphumboldt.com"; }
 
 	function __construct() {
-		$this->DBname = 'strateg3_pathways';
-		$this->DBuser = 'strateg3_pathway';
+		$this->DBname = 'wwwcaree_pathway';
+		$this->DBuser = 'wwwcaree_pathway';
 		$this->DBpass = '!!_CPT_pathway';
 
 		$this->ConnectDB();
@@ -32,7 +32,7 @@ class ThisSite extends SiteSettings {
 	function base_url() { return $_SERVER['SERVER_NAME']; }
 	function cache_path($folder="") { 
 		//JGD: Changed.
-		$base_dir = '/home/strateg3/public_html/careerpathways/cache/';
+		$base_dir = '/home/strateg3/public_html/cache/';
 		
 		if( $folder ) {
 			if( !is_dir($base_dir . $folder) ) 

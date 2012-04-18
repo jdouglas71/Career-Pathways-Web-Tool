@@ -133,7 +133,7 @@ class ThisSiteTemplate extends SiteTemplate {
 		</ul>
 
 		<?php
-		if( $_SERVER['SERVER_NAME'] == 'careerpathways.strategicehosting.com' ) {
+		if( $_SERVER['SERVER_NAME'] == 'www.careermaphumboldt.com' ) {
 		?>
 <script type="text/javascript">
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
