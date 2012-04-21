@@ -1,4 +1,4 @@
-SetEnv PHPRC /home/strateg3/public_html/careerpathways/php.ini
+SetEnv PHPRC /home/wwwcaree/public_html/php.ini
 
 Options +FollowSymLinks
 AddType text/css .css
