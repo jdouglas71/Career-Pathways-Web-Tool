@@ -1,4 +1,5 @@
 <?php
+	//JGD Backed out all my changes
 	$checked = FALSE;
 	if(substr($_GET['ids'], 0, 1) == 'c')
 	{
