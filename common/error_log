@@ -1,4 +1,0 @@
-[24-Mar-2012 10:40:21] PHP Warning:  require_once(HTML/QuickForm.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/strateg3/public_html/careerpathways/common/payment.inc.php on line 2
-[24-Mar-2012 10:40:21] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required 'HTML/QuickForm.php' (include_path='.:/home/strateg3/public_html/careerpathways/common:/home/strateg3/public_html/careerpathways/include:/home/strateg3/php/') in /home/strateg3/public_html/careerpathways/common/payment.inc.php on line 2
-[24-Mar-2012 10:40:55] PHP Fatal error:  Class 'ThisSite' not found in /home/strateg3/public_html/careerpathways/common/general.inc.php on line 33
-[24-Mar-2012 10:41:51] PHP Fatal error:  Class 'MyMailer' not found in /home/strateg3/public_html/careerpathways/common/siteemail.inc.php on line 3
