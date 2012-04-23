@@ -8,4 +8,6 @@ www/include/default.settings.php
 www/.htaccess
 
 common/Amazon-SES70-Mailer-PHP/
+common/Amazon-SES-Mailer-PHP/
 common/AWSSDKforPHP/
+common/tinymce.3.4.7/
