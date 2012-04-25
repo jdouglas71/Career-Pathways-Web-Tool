@@ -141,7 +141,7 @@ document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.
 </script>
 <script type="text/javascript">
 try {
-var pageTracker = _gat._getTracker("UA-8726801-2");
+var pageTracker = _gat._getTracker("UA-8726801-8");
 pageTracker._trackPageview();
 } catch(err) {}</script>
 		<?php
