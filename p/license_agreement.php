@@ -28,7 +28,7 @@ PrintHeader();
 
 <div class="license">
 <?php 
-	include('LICENSE.htm');
+	//include('LICENSE.htm');
 ?>
 </div>
 
