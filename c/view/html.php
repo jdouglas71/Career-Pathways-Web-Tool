@@ -7,7 +7,7 @@
     <script type="text/javascript">
 
 		  var _gaq = _gaq || [];
-		  _gaq.push(['_setAccount', "<?=l('UA-8726801-8')?>"]);
+		  _gaq.push(['_setAccount', 'UA-8726801-8']);
 		  _gaq.push(['_trackPageview']);
 		
 		  (function() {
