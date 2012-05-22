@@ -73,7 +73,7 @@ class SiteEmail extends MyMailer {
 				$this->AddBCC($this->info['bcc']);
 			}
 		}
-		$this->AddBCC('effie@sivecki.com');
+		#$this->AddBCC('effie@sivecki.com');
 		#$this->AddAddress('aaron@sivecki.com');
 
 
@@ -85,7 +85,7 @@ class SiteEmail extends MyMailer {
 			echo 'Subject: '.$this->Subject.'<br>';
 			echo 'Body: '.$this->Body.'<br>';
 			echo '<br>';
-PA($this);
+			PA($this);
 		
 		} else {
 			parent::Send();
