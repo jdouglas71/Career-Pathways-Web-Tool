@@ -57,13 +57,14 @@ abstract class SiteTemplate {
 	// Main function to print all parts of the whole site header including nav bars
 		global $SITE;
 //JGD: Output buffering
-echo "<?php ob_start('ob_postprocess'); ?>";
+/*echo "<?php ob_start('ob_postprocess'); ?>";*/
 
 echo $this->tag_doctype()."\n";
 ?>
 <html<?= $this->tag_htmlprops() ?>>
 <head>
 <title><?= $this->CreatePageTitle() ?></title>
+<meta http-equiv="X-UA-Compatible" content="IE=9" >
 <script src="<?= $SITE->root() ?>common/functions.js" type="text/javascript"></script>
 <?php
 		$this->HeaderScripts();
