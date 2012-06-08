@@ -39,10 +39,28 @@ disable_functions = posix_getpwuid,posix_getpwnam,exec
 
 Ensure the setting __allow_url_fopen__ is set to __On__.
 
-##WKHTMLTOPDF##
+##3rd Party Software##
+
+There are a number of 3rd party software packages required by the software.
+
+###WKHTMLTOPDF###
+
+[wkhtmltopdf project](http://code.google.com/p/wkhtmltopdf/). 
 
 In order to generate PDF for the Career Roadmaps and POST drawings, the tool WKHTMLTOPDF must be installed on the server and the file
-pdf/index.html (search for shell_exec) must be updated to reflect the location of the installed tool.
+pdf/index.html (search for shell_exec) must be updated to reflect the location of the installed tool. 
+
+###Amazon Mailer###
+
+[Amazon Mailer Repo](https://github.com/geoloqi/Amazon-SES-Mailer-PHP) 
+
+Pull and install into the directory __common/Amazon-SES-Mailer-PHP__.
+
+###Amazon Web Services###
+
+[Amazon Web Services](http://aws.amazon.com/sdkforphp/)
+
+Download and install into the directory __common/AWSSDKforPHP__.
 
 ##Try it out##
 
