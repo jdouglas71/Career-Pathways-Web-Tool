@@ -328,6 +328,8 @@ CREATE TABLE `post_drawings` (
   `header_link` TEXT,
   `header_state` TINYINT(1) NOT NULL DEFAULT '0',
   `footer_state` TINYINT(1) NOT NULL DEFAULT '1',
+  `header_state_preview` TINYINT(4),
+  `footer_state_preview` TINYINT(4),
   PRIMARY KEY  (`id`)
 );
 
@@ -432,4 +434,16 @@ CREATE TABLE `vpost_views` (
   PRIMARY KEY  (`id`)
 );
 
+CREATE TABLE `types` (
+  `id` int(11) NOT NULL auto_increment,
+  `description` varchar(50) NOT NULL,
+  `family` varchar(25) NOT NULL,
+  PRIMARY KEY  (`id`)
+)
 
+CREATE TABLE `object_type` (
+  `id` int(11) NOT NULL auto_increment,
+  `object_id` int(11) NOT NULL,
+  `type_id` int(11) NOT NULL,
+  PRIMARY KEY  (`id`)
+)
