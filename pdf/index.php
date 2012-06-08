@@ -2,12 +2,9 @@
 chdir('..');
 include('inc.php');
 
-logmsg("PDF INDEX");
-
 switch(request('mode'))
 {
 	case 'drawing':
-		logmsg( "drawing\n" );
 		$url = 'http://' . $_SERVER['SERVER_NAME'] . '/c/published/' . request('drawing_id') . '/view.html';
 		$filename = 'published-' . request('drawing_id') . '.pdf';
 		$drawing = $DB->SingleQuery('SELECT drawing_main.*,
@@ -21,7 +18,6 @@ switch(request('mode'))
 		break;
 
 	case 'version':
-		logmsg( "version\n" );
 		$url = 'http://' . $_SERVER['SERVER_NAME'] . '/c/version/' . request('drawing_id') . '/' . request('version_id') . '.html';
 		$filename = 'version-' . request('version_id') . '.pdf';
 		$drawing = GetDrawingInfo(request('version_id'));
@@ -29,7 +25,6 @@ switch(request('mode'))
 		break;
 		
 	case 'post_drawing':
-		logmsg( "post_drawing\n" );
 		$url = 'http://' . $_SERVER['SERVER_NAME'] . '/c/post/' . request('drawing_id') . '/view.html?hidecoursedescription';
 		$filename = 'post-published-' . request('drawing_id') . '.pdf';
 		$drawing = $DB->SingleQuery('SELECT post_drawing_main.*,
@@ -43,7 +38,6 @@ switch(request('mode'))
 		break;
 		
 	case 'post_version':
-		logmsg( "post_version\n" );
 		$url = 'http://' . $_SERVER['SERVER_NAME'] . '/c/post/' . request('drawing_id') . '/' . request('version_id') . '.html?hidecoursedescription';
 		$filename = 'post-version-' . request('version_id') . '.pdf';
 		$drawing = GetDrawingInfo(request('version_id'), 'post');
@@ -51,7 +45,6 @@ switch(request('mode'))
 		break;		
 		
 	case 'post_view':
-		logmsg( "post_view\n" );
 		$url = 'http://' . $_SERVER['SERVER_NAME'] . '/c/study/' . request('id') . '/view.html?print&hidecoursedescription';
 		$filename = 'post-view-' . request('id') . '.pdf';
 		$drawing = $DB->SingleQuery('SELECT name, school_name
@@ -62,23 +55,16 @@ switch(request('mode'))
 		break;
 		
 	default:
-		logmsg( "default DIE\n" );
 		die('error');
 }
 
 $fullPath = $SITE->cache_path("pdf").$filename;
 
-logmsg( "PDF fullpath: $fullPath\n" );
 
 if(!file_exists($fullPath) || filemtime($fullPath))
 {
-	logmsg( "Calling shell_exec.\n" );
+	//UPDATE to reflect your specific installation.
 	$retval = shell_exec('wkhtmltopdf-amd64 "' . $url . '" ' . $fullPath);
-	logmsg( "Shell_exec retval: $retval\n" );
-}
-else
-{
-	logmsg( "Using cached version.\n" );
 }
 
 $name = str_replace('&', ' and ', $name);
