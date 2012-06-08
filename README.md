@@ -26,6 +26,7 @@ drwxr-xr-x 12 pathways pathways  4096 2011-03-24 14:29 include
 ##php.ini##
 
 Ensure the setting __mpc_magic_quotes__ is set to __Off__.
+
 Add the __include_path__ setting to include the full path to your include and common directories. 
 ```
 include_path=".:/home/wwwcaree/public_html/common:/home/wwwcaree/public_html/include"
