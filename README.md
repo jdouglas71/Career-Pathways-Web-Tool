@@ -52,13 +52,13 @@ pdf/index.html (search for shell_exec) must be updated to reflect the location o
 
 ###Amazon Mailer###
 
-[Amazon Mailer Repo](https://github.com/geoloqi/Amazon-SES-Mailer-PHP) 
+[Amazon Mailer Repo](https://github.com/geoloqi/Amazon-SES-Mailer-PHP). 
 
 Pull and install into the directory __common/Amazon-SES-Mailer-PHP__.
 
 ###Amazon Web Services###
 
-[Amazon Web Services](http://aws.amazon.com/sdkforphp/)
+[Amazon Web Services](http://aws.amazon.com/sdkforphp/).
 
 Download and install into the directory __common/AWSSDKforPHP__.
 
