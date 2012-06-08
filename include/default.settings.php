@@ -9,18 +9,20 @@ class ThisSite extends SiteSettings {
 	public $olmis_enabled = FALSE;
 	public $oregon_skillset_enabled = TRUE;
 
-	//JGD: Need to change?:
+	//Change if necessary. The language file refers to the file /lang/$lang_file.php and contains language specific to the site.
 	public $lang_file = 'humboldt';
-	
+
+	//UPDATE for new site. 
 	function name() { return "Humboldt Career Pathways Web Tool"; }
-	//JGD: NEed to change?
+	//UPDATE for new site.
 	function email_name() { return "Humboldt CTE Pathways"; }
-	//JGD: NEed to change?
+	//UPDATE for new site.
 	function email() { return "helpdesk@careermaphumboldt.com"; }
 
-	//JGD: NEed to change?
+	//UPDATE for new site.
 	function recipient_email() { return "helpdesk@careermaphumboldt.com"; }
 
+	//UPDATE for new site.
 	function __construct() {
 		$this->DBname = 'wwwcaree_pathways';
 		$this->DBuser = 'wwwcaree_pathway';
@@ -31,7 +33,7 @@ class ThisSite extends SiteSettings {
 
 	function base_url() { return $_SERVER['SERVER_NAME']; }
 	function cache_path($folder="") { 
-		//JGD: Changed.
+		//UPDATE for new site.
 		$base_dir = '/home/wwwcaree/public_html/cache/';
 		
 		if( $folder ) {
