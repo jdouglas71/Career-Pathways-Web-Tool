@@ -2,10 +2,14 @@ After downloading the source code, you will need to do some initial configuratio
 
 ##Settings File##
 
-
 The file include/default.settings.php will need to be updated to reflect the specifics of your installation. Search for the word
 UPDATE to locate the lines that need to be changed. This includes adding your database username and password.
 
+##Database##
+
+Configure the database username and password in your *.settings.php file. If you can't create your own file, you will have to edit the default.settings.php file directly, just make sure not to commit that file back to the repository.
+
+Install the database tables from the scripts/sql/schema.sql file provided. After the tables are created, run the scripts/sql/initdata.sql file to insert some default data.
 
 ##Filesystem##
 
@@ -38,7 +42,6 @@ Ensure the setting __allow_url_fopen__ is set to __On__.
 
 In order to generate PDF for the Career Roadmaps and POST drawings, the tool WKHTMLTOPDF must be installed on the server and the file
 pdf/index.html (search for shell_exec) must be updated to reflect the location of the installed tool.
-
 
 ##Try it out##
 
