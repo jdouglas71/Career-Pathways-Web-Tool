@@ -59,8 +59,7 @@ switch( Request('mode') ) {
 				FROM '.$main_table.' AS m
 				LEFT JOIN schools ON school_id=schools.id
 				WHERE m.name IN ("'.str_replace(',','","',Request('categories')).'")
-				'.$where.'
-				ORDER BY school_name',
+				'.$where,
 			'school_name','id');
 		} else {
 			$where = '';
