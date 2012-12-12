@@ -641,5 +641,20 @@ global $DB, $DAYS_OF_WEEK;
 	}
 }
 
+/**
+ *searches the value passed in for anchor tags and adds "http://" to the front of those
+ *that do not have http
+ **/
+function absolutePaths($value){
+	//replace any occurances of href=" that are not followed by http, with href="http://
+	$text = preg_replace('/href="(?!http)/','href="http://',$value);
+	
+	//make sure there was no regex error
+	if(!isset($text)){
+		$text = $value;
+	}
+	
+	return $text;
+}
 
 ?>

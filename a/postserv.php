@@ -428,8 +428,10 @@ require_once("POSTChart.inc.php");
 
 		echo getFooterHTML($cell);
 ?>
-			<script language="JavaScript" type="text/javascript">		
-		$(".postGreyboxContent input").keydown(function(e) {
+		<script language="JavaScript" type="text/javascript">
+			<?=tinyMCEInitScript();?>
+			$("#postFormContent").focus();
+			$(".postGreyboxContent input").keydown(function(e) {
 				if( e.keyCode == 13 ) $("#postFormSave").click();
 			});
 
@@ -438,8 +440,7 @@ require_once("POSTChart.inc.php");
 					type: "POST",
 					url: "/a/postserv.php?mode=commit&type=footer&id=<?=$id?>",
 					data: {
-						text: $("#postFormContent").val(),
-						link: $("#postFormURL").val()
+						text: tinyMCE.activeEditor.getContent()
 					},
 					success: function(data){
                         $("#post_footer_<?=$id?>").html(data);
@@ -465,6 +466,8 @@ require_once("POSTChart.inc.php");
 		echo getHeaderHTML($cell);
 ?>
 		<script language="JavaScript" type="text/javascript">
+			<?=tinyMCEInitScript();?>
+			$("#postFormContent").focus();
 			$(".postGreyboxContent input").keydown(function(e) {
 				if( e.keyCode == 13 ) $("#postFormSave").click();
 			});
@@ -473,7 +476,7 @@ require_once("POSTChart.inc.php");
 				$.ajax({
 					type: "POST",
 					url: "/a/postserv.php?mode=commit&type=header&id=<?=$id?>",
-					data: {text: $("#postFormContent").val(), link: $("#postFormURL").val()},
+					data: {text: tinyMCE.activeEditor.getContent()},
 					success: function(data){
                         $("#post_headers_<?=$id?>").html(data);
 						chGreybox.close();
@@ -547,6 +550,7 @@ require_once("POSTChart.inc.php");
 		$number = (isset($_POST['number']))?$_POST['number']:'';
 		$credits = (isset($_POST['credits']))?$_POST['credits']:'0';
 		$title = (isset($_POST['title']))?$_POST['title']:'';
+		$content = absolutePaths($_POST['content']);
 
 		// Update the database
 		$DB->Update('post_cell', array(
@@ -555,7 +559,7 @@ require_once("POSTChart.inc.php");
 			'course_number'=>$number,
 			'course_title'=>$title,
 			'course_credits'=>$credits,
-			'content'=>$_POST['content'],
+			'content'=>$content,
 			'href' => $href), intval($id));
 
 		if($_POST['legend'])
@@ -570,7 +574,7 @@ require_once("POSTChart.inc.php");
 		}
 		else
 		{
-			echo ($link?'<a href="javascript:void(0);" style="background: ' . $background . '">':'<span style="background: ' . $background . '">') . $_POST['content'] . ($link?'</a>':'</span>');
+			echo ($link?'<a href="javascript:void(0);" style="background: ' . $background . '">':'<span style="background: ' . $background . '">') . $content . ($link?'</a>':'</span>');
 		}
 	}//end function commitCell
 	
@@ -611,35 +615,17 @@ require_once("POSTChart.inc.php");
 	function commitFooter($id)
 	{
 		global $DB;
-
-		$href = $_POST['link'];
-		$link = FALSE;
-		if(isset($_POST['link']) && $_POST['link'] != '')
-		{
-			$link = TRUE;
-			if(substr($href, 0, 7) != 'http://' && substr($href, 0, 8) != 'https://')
-				$href = 'http://' . $_POST['link'];
-		}
-
-		$DB->Update('post_drawings', array('footer_text' => $_POST['text'], 'footer_link'=>$href), intval($id));
-		echo ($link?'<a href="javascript:void(0);">':'') . $_POST['text'] . ($link?'</a>':'');
+		$text = absolutePaths($_POST['text']);
+		$DB->Update('post_drawings', array('footer_text' => $text), intval($id));
+		echo $text;
 	}//end function commitFooter
 	
 	function commitHeader($id)
 	{
 		global $DB;
-
-		$href = $_POST['link'];
-		$link = FALSE;
-		if(isset($_POST['link']) && $_POST['link'] != '')
-		{
-			$link = TRUE;
-			if(substr($href, 0, 7) != 'http://' && substr($href, 0, 8) != 'https://')
-				$href = 'http://' . $_POST['link'];
-		}
-
-		$DB->Update('post_drawings', array('header_text' => $_POST['text'], 'header_link'=>$href), intval($id));
-		echo ($link?'<a href="javascript:void(0);">':'') . $_POST['text'] . ($link?'</a>':'');
+		$text = absolutePaths($_POST['text']);
+	        $DB->Update('post_drawings', array('header_text' => $text), intval($id));
+		echo $text;
 	}//end function commitHeader
 
 	function commitSwap($fromID, $toID)
@@ -816,18 +802,17 @@ require_once("POSTChart.inc.php");
 
 	function getFooterHTML(&$footer = NULL)
 	{
-		if(!$footer)
+		if(!$footer){
 			$footer = array('footer_text'=>'', 'footer_link'=>'');
+		}
 
 		ob_start();
 ?>
 		<form action="javascript:void(0);">
 			<div style="font-weight: bold;">Footer Content:</div>
-			<input type="text" id="postFormContent" style="width: 400px; border: 1px #AAA solid;" value="<?=$footer['footer_text']?>" />
-			<br /><br />
-			<div style="font-weight: bold;">Link this Content: <span style="color: #777777; font-size: 10px; font-weight: normal;">(Optional)</span></div>
-			URL: <input type="text" id="postFormURL" style="width: 300px; border: 1px #AAA solid;" value="<?=$footer['footer_link']?>" />
-			<br /><br />
+			<textarea id="postFormContent" rows="5" cols="40" style="width: 330px; border: 1px #AAA solid;" class="editorWindow"><?=$footer['footer_text']?></textarea>
+			<div class="tip"><p>TIP: To single space, hold down <b>Shift + Enter/Return</b> key for a new single spaced line of content.</p></div>
+			<br />
 			<div style="text-align: right;">
 				<input type="button" id="postFormSave" value="Save" style="padding: 3px; background: #E0E0E0; border: 1px #AAA solid; font-weight: bold;" />
 			</div>
@@ -836,7 +821,7 @@ require_once("POSTChart.inc.php");
 		return ob_get_clean();
 	}//end function getFooterHTML
 	
-		function getHeaderHTML(&$header = NULL)
+	function getHeaderHTML(&$header = NULL)
 	{
 		if(!$header)
 			$header = array('header_text'=>'', 'header_link'=>'');
@@ -845,18 +830,16 @@ require_once("POSTChart.inc.php");
 ?>
 		<form action="javascript:void(0);">
 			<div style="font-weight: bold;">Header Content:</div>
-			<input type="text" id="postFormContent" style="width: 400px; border: 1px #AAA solid;" value="<?=$header['header_text']?>" />
-			<br /><br />
-			<div style="font-weight: bold;">Link this Content: <span style="color: #777777; font-size: 10px; font-weight: normal;">(Optional)</span></div>
-			URL: <input type="text" id="postFormURL" style="width: 300px; border: 1px #AAA solid;" value="<?=$header['header_link']?>" />
-			<br /><br />
+			<textarea id="postFormContent" rows="5" cols="40" style="width: 330px; border: 1px #AAA solid;" class="editorWindow"><?=$header['header_text']?></textarea>
+                        <div class="tip"><p>TIP: To single space, hold down <b>Shift + Enter/Return</b> key for a new single spaced line of content.</p></div>
+			<br />
 			<div style="text-align: right;">
 				<input type="button" id="postFormSave" value="Save" style="padding: 3px; background: #E0E0E0; border: 1px #AAA solid; font-weight: bold;" />
 			</div>
 		</form>
 <?php
 		return ob_get_clean();
-	}//end function getFooterHTML
+	}//end function getHeaderHTML
 
 	/**
 	 * This takes a legend array and prints the HTML/javascript for the Legend
