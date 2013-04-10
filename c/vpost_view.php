@@ -41,9 +41,9 @@ foreach( $drawings as $d )
 
 if( Request('format') == 'html' )
 {
-
-        if(count($drawings) == 0)
-                drawing_not_found('postview', Request('id'));
+    if(count($drawings) == 0)
+	{
+		drawing_not_found('postview', Request('id'));
     }
     if ($SITE->hasFeature('post_assurances')){
         $view = $DB->SingleQuery('SELECT published FROM vpost_views WHERE id='.Request('id'));
